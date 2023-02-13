@@ -22,7 +22,7 @@
             v-model="location"
             type="text"
             hint="Location"
-            :rules="[(val) => (val && val.length > 0 && val.length < 101 && new RegExp(/^[\w\s]*$/).test(val)) || 'Please enter the location']"
+            :rules="[(val) => (val.length < 101 && new RegExp(/^[\w\s]*$/).test(val)) || 'Please enter valid location (max 100 chars)']"
         />
 
         <div class="date">
