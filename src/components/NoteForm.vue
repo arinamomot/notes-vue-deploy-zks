@@ -12,7 +12,7 @@
             type="text"
             hint="Title *"
             required
-            :rules="[(val) => (val && val.length > 0) || 'Please enter the title']"
+            :rules="[(val) => (val && val.length > 0 && val.length < 101) || 'Please enter the title (max 100 chars)']"
         />
         <q-input
             ref="location"
@@ -22,7 +22,7 @@
             v-model="location"
             type="text"
             hint="Location"
-            :rules="[(val) => (val && val.length > 0 && new RegExp(/^[\w\s]*$/).test(val)) || 'Please enter the location']"
+            :rules="[(val) => (val && val.length > 0 && val.length < 101 && new RegExp(/^[\w\s]*$/).test(val)) || 'Please enter the location']"
         />
 
         <div class="date">
@@ -56,7 +56,7 @@
             autogrow
             required
             hint="Description *"
-            :rules="[(val) => (!!val && val.length > 0) || 'Please enter the description']"
+            :rules="[(val) => (!!val && val.length > 0 && val.length < 501) || 'Please enter the description (max 500 chars)']"
         />
         <q-input ref="url" label="URL" filled clearable v-model="url" type="url" hint="URL"/>
         <div>
