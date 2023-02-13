@@ -70,7 +70,7 @@
                 label="University *"
                 hint="University where you study"
                 lazy-rules
-                :rules="[ val => val && val.length > 1 && val.length < 101 && new RegExp(/^[A-Za-z0-9\s.,'-]/).test(val) || 'Please enter your university']"
+                :rules="[ val => val && val.length > 1 && val.length < 101 && new RegExp(/^[A-Za-z0-9\s.,'-]*$/).test(val) || 'Please enter your university']"
       >
         <template v-slot:no-option>
           <q-item>
