@@ -8,7 +8,7 @@
                  hint="Name"
                  label="Name *"
                  lazy-rules
-                 :rules="[ val => val && val.length > 1|| 'Please enter your name']"
+                 :rules="[ val => val && val.length > 1 && val.length < 51 && new RegExp(/^[a-zA-Z]+(?:[' -][a-zA-Z]+)*$/).test(val) || 'Name should have length from 2 to 50 characters']"
         />
 
         <q-input class="surname" ref="surname" clearable filled
@@ -16,7 +16,7 @@
                  label="Surname *"
                  hint="Surname"
                  lazy-rules
-                 :rules="[ val => val && val.length > 1 || 'Please enter your surname']"
+                 :rules="[ val => val && val.length > 1 && val.length < 51 && new RegExp(/^[a-zA-Z]+(?:[' -][a-zA-Z]+)*$/).test(val) || 'Surname should have length from 2 to 50 characters']"
         />
       </div>
 
@@ -42,7 +42,7 @@
                   hint="City where you study"
                   label="City *"
                   lazy-rules
-                  :rules="[ val => val && val.length > 1 || 'Please enter your city']"
+                  :rules="[ val => val && val.length > 1 && val.length < 51 && new RegExp(/^[A-Za-z]+(?:[\s-][A-Za-z]+)*$/).test(val) || 'City should have length from 2 to 50 characters']"
         >
           <template v-slot:no-option>
             <q-item>
@@ -70,7 +70,7 @@
                 label="University *"
                 hint="University where you study"
                 lazy-rules
-                :rules="[ val => val && val.length > 1 || 'Please enter your city']"
+                :rules="[ val => val && val.length > 1 && val.length < 101 && new RegExp(/^[A-Za-z0-9\s.,'-]/).test(val) || 'Please enter your university']"
       >
         <template v-slot:no-option>
           <q-item>
@@ -87,7 +87,7 @@
                type="email"
                hint="Email"
                lazy-rules
-               :rules="[ val => val && val.length > 0 || 'Please enter your email']"
+               :rules="[ val => val && val.length > 0 && val.length < 101 && new RegExp(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/).test(val) || 'Please enter your email']"
       />
 
       <q-input ref="password" v-model="password" label="Password *"
@@ -95,7 +95,7 @@
                :type="isPwd ? 'password' : 'text'"
                hint="Use a combination of letters, numbers, and symbols - a total of at least 8 characters"
                lazy-rules
-               :rules="[ val => val && val.length > 7 || 'Please enter password']">
+               :rules="[ val => val && val.length > 7 && val.length < 17 && new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+.'])\S{8,}$/).test(val) || 'Password should be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character from the set !@#$%^&*()_+.']">
         <template v-slot:append>
           <q-icon
               :name="isPwd ? 'visibility_off' : 'visibility'"
